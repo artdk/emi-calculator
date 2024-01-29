@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EMI Calculator</title>
+    <script type="text/javascript" src="functions.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="parent">
+    <div class="main-container">
+        <div>
+            <h1>Arthur Degen-Knifton's <br/>
+                Equated Monthly Installment (EMI) <br/>
+                Calculator</h1>
+        </div>
+        <div class="main-container">
+            <div class="display">
+                <label class="label-standard" for="loan-amount">Loan Amount</label>
+                <input style="width:55px" type="text" pattern="\d*" step="1" id="loan-amount" value="0"/>
+                <div class="units">&euro;</div>
+            </div>
+            <div class="display">
+                <label class="label-standard" for="interest-rate">Annual Interest Rate</label>
+                <input style="width:25px" type="text" pattern="\d*\.?" step="1" id="interest-rate" value="0.0"/>
+                <div class="units">%</div>
+            </div>
+            <div class="display">
+                <label class="label-standard" for="loan-term">Loan Term</label>
+                <input style="width:15px" type="text" pattern="\d*" step="1" id="loan-term" value="0"/>
+                <div class="units">months</div>
+            </div>
+            <div class="display">
+                <label class="label-standard" for="email">Email address</label>
+                <input type="text" step="1" id="email"/>
+            </div>
+        </div>
+        <div></div>
+        <div>
+            <button onclick="getEmi()">Calculate your EMI</button>
+        </div>
+        <hr/>
+        <div class="display">
+            <div style="padding-right: 10px">Your EMI:</div>
+            <div id="emi-display"></div>
+        </div>
+        <div style="color:Red" id="emi-error"></div>
+    </div>
+</div>
+</body>
+</html>
