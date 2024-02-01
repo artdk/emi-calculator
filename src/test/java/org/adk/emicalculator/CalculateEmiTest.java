@@ -71,15 +71,15 @@ class CalculateEmiTest {
 
     @Test
     void shouldPersistCalculatesEmi() {
-        sut.calculate(1, 12.0, 1, VALID_EMAIL);
-        verify(emiRepository).persistEmi(1.0099999999999991, VALID_EMAIL);
+        sut.calculate(1, 1.0, 1, VALID_EMAIL);
+        verify(emiRepository).persistEmi(0.08378541155580528, VALID_EMAIL);
     }
 
     static Stream<Arguments> validEmiCalculations() {
         return Stream.of(
-                Arguments.of(1, 12.0, 1, 1.0099999999999991),
-                Arguments.of(5000, 3.6, 17, 302.12225508626244),
-                Arguments.of(753892, 99.2, 29, 69240.21037114559)
+                Arguments.of(1, 1.0, 1, 0.08378541155580528),
+                Arguments.of(5000, 3.6, 17, 32.80569291821602),
+                Arguments.of(753892, 99.2, 29, 62321.738666728386)
         );
     }
 }

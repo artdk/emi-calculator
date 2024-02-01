@@ -16,20 +16,20 @@ public class CalculateEmi {
     @Autowired
     private EmiRepository emiRepository;
 
-    public double calculate(int loanAmount, double yearlyInterestRate, int loanTerm, String email) {
+    public double calculate(int loanAmount, double yearlyInterestRate, int loanTermInYears, String email) {
         validateLoanAmount(loanAmount);
         validateYearlyInterestRate(yearlyInterestRate);
-        validateLoanTerm(loanTerm);
+        validateLoanTerm(loanTermInYears);
         validateEmail(email);
 
-        double emi = calculateEmi(loanAmount, yearlyInterestRate, loanTerm);
+        double emi = calculateEmi(loanAmount, yearlyInterestRate, loanTermInYears * 12);
         emiRepository.persistEmi(emi, email);
         return emi;
     }
 
-    private double calculateEmi(int loanAmount, double yearlyInterestRate, int loanTerm) {
+    private double calculateEmi(int loanAmount, double yearlyInterestRate, int loanTermInMonths) {
         double monthlyInterestRate = yearlyInterestRate / 1200.0;
-        double compoundRate = Math.pow(1 + monthlyInterestRate, loanTerm);
+        double compoundRate = Math.pow(1 + monthlyInterestRate, loanTermInMonths);
         return loanAmount * monthlyInterestRate * compoundRate / (compoundRate - 1);
     }
 

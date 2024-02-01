@@ -31,7 +31,7 @@ class PostEmiCalculationControllerIT {
 
         mockMvc.perform(post("/emi").contentType(MediaType.APPLICATION_JSON).content(body))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.emi").value(878.9125572261006));
+                .andExpect(jsonPath("$.emi").value(120.57922801660621));
     }
 
     @Test
